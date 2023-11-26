@@ -2,7 +2,7 @@ TARGET      = sand-simulator
 
 
 CXX         = c++
-CXXFLAGS    = -Wall -Wextra -Werror -I/opt/homebrew/Cellar/sfml/2.6.1/include
+CXXFLAGS    = -Wall -Wextra -Werror -I/opt/homebrew/Cellar/sfml/2.6.1/include -std=c++11
 
 LDFLAGS     = -L/opt/homebrew/Cellar/sfml/2.6.1/lib -lsfml-window -lsfml-graphics -lsfml-system
 
@@ -13,12 +13,13 @@ OBJ_DIR     = ./obj
 
 
 SRC_FILES		=	$(SRC_DIR)/main.cpp           \
-							$(EVENT_DIR)/sand.cpp
+							$(SRC_DIR)/SandWand.cpp
+
 
 OBJ_FILES   = $(SRC_FILES:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
 
 
-HEADER      = ./include/sand.hpp
+HEADER      = 
 
 
 all : $(TARGET)
