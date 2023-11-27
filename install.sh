@@ -13,9 +13,10 @@ elif [[ $compiler == *"clang"* ]] && [ "$arch" = "arm64" ]; then
   sfml_bundle="SFML-2.6.1-macOS-clang-arm64.tar.gz"
 fi
 
+sfml_bundle_out=${sfml_bundle%.tar.gz}
 
 tar -xzvf ./sand-simulator/sfml/$sfml_bundle -C ./sand-simulator/sfml
-mv ./sand-simulator/sfml/$sfml_bundle ./sand-simulator/sfml/2.6.1
+mv ./sand-simulator/sfml/$sfml_bundle_out ./sand-simulator/sfml/2.6.1
 
 
 
