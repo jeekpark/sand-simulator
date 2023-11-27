@@ -41,20 +41,17 @@ CSandWand& CSandWand::operator=(const CSandWand &copy)
   return *this;
 }
 
-void CSandWand::use(sf::Image& image, unsigned int x, unsigned int y)
+void CSandWand::use(unsigned int x, unsigned int y, CWorld& world)
 {
-  const sf::Vector2u size = image.getSize();
-
   std::vector<sf::Vector2i> pixels;
   for (unsigned int i = x - mRadius; i <= x + mRadius; ++i)
   {
     for (unsigned int j = y -mRadius; j <= y + mRadius; ++j)
     {
-      if (std::pow(i - x, 2) + std::pow(j - y, 2) <= std::pow(mRadius, 2))
-      {
-        if ((0 <= i && i < size.x) && (0 <= j && j < size.y))
-          pixels.push_back(sf::Vector2i(i, j));
-      }
+      //if ((i - x) * (i - x) + std::pow(j - y, 2) <= std::pow(mRadius, 2))
+      //{
+        pixels.push_back(sf::Vector2i(i, j));
+      //}
     }
   }
   std::random_device rd;
@@ -63,7 +60,7 @@ void CSandWand::use(sf::Image& image, unsigned int x, unsigned int y)
   int numPixelsToChange = pixels.size() * (static_cast<double>(mDensity) / 100.0);
   for (int i = 0; i < numPixelsToChange; ++i)
   {
-    image.setPixel(pixels[i].x, pixels[i].y, sf::Color::Yellow);
+    world.addParticle(pixels[i].x, pixels[i].y, sf::Color::Yellow);
   }
 
 

@@ -14,6 +14,7 @@ OBJ_DIR     = ./obj
 CLANGD_GEN  = ./clangd_gen.sh
 
 SRC_FILES		=	$(SRC_DIR)/main.cpp           \
+							$(SRC_DIR)/World.cpp					\
 							$(SRC_DIR)/SandWand.cpp
 
 

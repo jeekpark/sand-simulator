@@ -14,7 +14,7 @@
 #define SAND_HPP
 
 #include "./IMagicWand.hpp"
-
+#include "./World.hpp"
 class CSandWand : public IMagicWand
 {
 public:
@@ -22,7 +22,7 @@ public:
                 CSandWand(const CSandWand& copy);
   virtual       ~CSandWand(void);
   CSandWand&    operator=(const CSandWand& copy);
-  virtual void  use(sf::Image& image, unsigned int x, unsigned int y);
+  virtual void  use(unsigned int x, unsigned int y, CWorld& world);
 private:
   unsigned int  mRadius;
   unsigned int  mDensity;

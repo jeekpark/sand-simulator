@@ -13,13 +13,13 @@
 #ifndef IMAGICWAND_HPP
 #define IMAGICWAND_HPP
 
-#include "SFML/Graphics/Image.hpp"
+class CWorld;
 
 class IMagicWand
 {
 public:
   virtual       ~IMagicWand(void) {}
-  virtual void  use(sf::Image& image, unsigned int x, unsigned int y) = 0;
+  virtual void  use(unsigned int x, unsigned int y, CWorld& world) = 0;
 };
 
 
