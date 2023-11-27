@@ -9,8 +9,5 @@ fi
 
 pwd=$(pwd)
 
-# CompileFlags:
-#  Add: [-I../sfml/2.6.1/include, -std=c++11]
-
 echo "CompileFlags:" > .clangd
 echo "  Add: [-I$pwd/$sfml_path, -std=c++11]" >> .clangd
