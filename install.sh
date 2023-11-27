@@ -17,3 +17,4 @@ fi
 
 echo "Architecture: $arch"
 make -C sand-simulator clangd
+
