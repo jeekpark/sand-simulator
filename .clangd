@@ -1,2 +1,0 @@
-CompileFlags:
-  Add: [-I/Users/jeekpark/sand-simulator/sfml/2.6.1/include, -std=c++11]
