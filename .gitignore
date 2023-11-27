@@ -1,0 +1,8 @@
+.clangd
+
+
+*.o
+
+.vscode
+
+.DS*

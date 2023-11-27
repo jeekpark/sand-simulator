@@ -2,15 +2,16 @@ TARGET      = sand-simulator
 
 
 CXX         = c++
-CXXFLAGS    = -Wall -Wextra -Werror -I/opt/homebrew/Cellar/sfml/2.6.1/include -std=c++11
+CXXFLAGS    = -Wall -Wextra -Werror -I./sfml/2.6.1/include -std=c++11
 
-LDFLAGS     = -L/opt/homebrew/Cellar/sfml/2.6.1/lib -lsfml-window -lsfml-graphics -lsfml-system
+LDFLAGS     = -L./sfml/2.6.1/lib -lsfml-window -lsfml-graphics -lsfml-system
 
 SRC_DIR     = ./src
 EVENT_DIR   = $(SRC_DIR)/event
 LOOP_DIR    = $(SRC_DIR)/loop
 OBJ_DIR     = ./obj
 
+CLANGD_GEN  = ./clangd_gen.sh
 
 SRC_FILES		=	$(SRC_DIR)/main.cpp           \
 							$(SRC_DIR)/SandWand.cpp
@@ -35,5 +36,7 @@ $(OBJ_DIR)/%.o : $(SRC_DIR)/%.cpp $(HEADER)
 clean :
 	rm -rf $(OBJ_DIR) $(TARGET)
 
+clangd :
+	/bin/bash $(CLANGD_GEN)
 
 .PHONY: all clean
