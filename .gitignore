@@ -1,10 +1,10 @@
-.clangd
 
 
 *.o
-
-.vscode
-
-.DS*
-
 a.out
+sand-simulator
+
+
+.clangd
+.vscode
+.DS*
