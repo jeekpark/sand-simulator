@@ -44,14 +44,14 @@ CSandWand& CSandWand::operator=(const CSandWand &copy)
 void CSandWand::use(unsigned int x, unsigned int y, CWorld& world)
 {
   std::vector<sf::Vector2i> pixels;
-  for (unsigned int i = x - mRadius; i <= x + mRadius; ++i)
+  for (int i = x - mRadius; i <= x + mRadius; ++i)
   {
-    for (unsigned int j = y -mRadius; j <= y + mRadius; ++j)
+    for (int j = y -mRadius; j <= y + mRadius; ++j)
     {
-      //if ((i - x) * (i - x) + std::pow(j - y, 2) <= std::pow(mRadius, 2))
-      //{
+      if ((i - x) * (i - x) + std::pow(j - y, 2) <= std::pow(mRadius, 2))
+      {
         pixels.push_back(sf::Vector2i(i, j));
-      //}
+      }
     }
   }
   std::random_device rd;

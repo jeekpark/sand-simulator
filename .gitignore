@@ -1,6 +1,7 @@
 
 
 *.o
+obj
 a.out
 sand-simulator
 sfml/2.6.1
