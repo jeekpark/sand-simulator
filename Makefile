@@ -4,7 +4,7 @@ TARGET      = sand-simulator
 CXX         = c++
 CXXFLAGS    = -Wall -Wextra -Werror -I./sfml/2.6.1/include -std=c++11
 
-LDFLAGS     = -L./sfml/2.6.1/lib -lsfml-window -lsfml-graphics -lsfml-system
+LDFLAGS     = -L./sfml/2.6.1/lib -lsfml-window -lsfml-graphics -lsfml-system -Wl,-rpath,./sfml/2.6.1/lib
 
 SRC_DIR     = ./src
 EVENT_DIR   = $(SRC_DIR)/event
