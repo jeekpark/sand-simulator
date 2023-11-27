@@ -4,11 +4,11 @@ It has a big grid of cells and a set of rules that get applied to each cell ever
 
 ## Install:
 sand-simulator has an automatic installer.
-Copy the line bellow to your console and execut it.
+Copy the line bellow to your console and execute it.
 It will automatically download the repo, create the necessary folders.
 
 ```
 bash -c "$(curl -fsSL https://raw.github.com/jeekpark/sand-simulator/main/install.sh)"
 ```
 
-## Excute:
+## Execute:
