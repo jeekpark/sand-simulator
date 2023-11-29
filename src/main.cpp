@@ -10,7 +10,18 @@
  */
 
 
-#include <cstdlib>
+#include "ssim/Ssim.hpp"
+
+int main(const int, const char**)
+{
+  Ssim::Core* game = new Ssim::Core();
+  game->run();
+  delete game;
+
+  return 0;
+}
+
+/* #include <cstdlib>
 #include <ctime>
 #include <iostream>
 
@@ -108,4 +119,4 @@ int main(const int, const char**)
   delete sandWand;
 
   return 0;
-}
+} */

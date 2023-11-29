@@ -2,14 +2,12 @@ TARGET      = sand-simulator
 
 
 CXX         = c++
-CXXFLAGS    = -Wall -Wextra -Werror -I./sfml/2.6.1/include -std=c++11
+CXXFLAGS    = -Wall -Wextra -Werror -I./lib/sfml/2.6.1/include -std=c++11
 
-LDFLAGS     = -L./sfml/2.6.1/lib -lsfml-window -lsfml-graphics -lsfml-system -Wl,-rpath,./sfml/2.6.1/lib
+LDFLAGS     = -L./lib/sfml/2.6.1/lib -lsfml-window -lsfml-graphics -lsfml-system -Wl,-rpath,./lib/sfml/2.6.1/lib
 
 SRC_DIR     = ./src
-EVENT_DIR   = $(SRC_DIR)/event
-LOOP_DIR    = $(SRC_DIR)/loop
-OBJ_DIR     = ./obj
+SSIM_DIR		=	$(SRC_DIR)/ssim
 
 CLANGD_GEN  = ./clangd_gen.sh
 
@@ -24,6 +22,9 @@ OBJ_FILES   = $(SRC_FILES:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
 
 HEADER      = 
 
+PCH					=	$(SSIM_DIR)/common.hpp.gch
+PCH_SRC			=	$(SSIM_DIR)/common.hpp
+
 
 all : $(TARGET)
 
@@ -31,12 +32,15 @@ all : $(TARGET)
 $(TARGET) : $(OBJ_FILES)
 	$(CXX) $(LDFLAGS) $^ -o $@
 
+$(PCH) : $(PCH_SRC)
+	$(CXX) $(CXXFLAGS) -x c++-header -o $@ $<
+
 $(OBJ_DIR)/%.o : $(SRC_DIR)/%.cpp $(HEADER)
 	mkdir -p $(dir $@)
-	$(CXX) $(CXXFLAGS) -c $< -o $@
+	$(CXX) $(CXXFLAGS) -include $(PCH_SRC) -c $< -o $@
 
 clean :
-	rm -rf $(OBJ_DIR) $(TARGET)
+	rm -rf $(OBJ_DIR) $(TARGET) $(PCH)
 
 clangd :
 	/bin/bash $(CLANGD_GEN)
