@@ -1,5 +1,5 @@
 
-
+# Default
 *.o
 obj
 a.out
@@ -8,3 +8,5 @@ lib/sfml/2.6.1
 .clangd
 .vscode
 .DS*
+
+# Log

@@ -12,6 +12,7 @@
 #pragma once
 
 #include "ssim/common.hpp"
+#include "ssim/Core/Event/EventManager.hpp"
 
 namespace Ssim
 {
@@ -49,6 +50,11 @@ namespace Ssim
   private:
     void onGameUpdate(void);
   private:
-    
-  }
+    bool mIsRunning = true;
+    bool mIsPaused = false;
+    sf::RenderWindow mWindow;
+    std::string mWindowTitle;
+    EventManager mEventManager;
+
+  };
 }
