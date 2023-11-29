@@ -14,30 +14,50 @@
 #include <ctime>
 #include <iostream>
 
+#include "IMagicWand.hpp"
 #include "SFML/Graphics/Color.hpp"
+#include "SFML/Graphics/Font.hpp"
 #include "SFML/Graphics/RenderWindow.hpp"
 #include "SFML/Graphics/Sprite.hpp"
+#include "SFML/Graphics/Text.hpp"
 #include "SFML/Graphics/Texture.hpp"
 #include "SFML/System/Vector2.hpp"
 #include "SFML/Window/Mouse.hpp"
 #include "SFML/Window/VideoMode.hpp"
 #include "SFML/Window/WindowBase.hpp"
 #include "SFML/Window/Event.hpp"
+#include <SFML/Graphics.hpp>
+#include <sstream>
 
 #include "./World.hpp"
 #include "./SandWand.hpp"
+#include "WaterWand.hpp"
+
+
+
 
 int main(const int, const char**)
 {
-  std::srand(std::time(0));
 	sf::RenderWindow window(sf::VideoMode(800, 600), "sand-simulator");
-	window.setFramerateLimit(60);
+  sf::Texture texture;
+	sf::Sprite sprite;
+  sf::Font font;
+  sf::Text textEntropy;
 
-	CSandWand wand;
+  window.setFramerateLimit(60);
+  font.loadFromFile("./resources/Minecraft.ttf");
+  textEntropy.setFont(font);
+  textEntropy.setCharacterSize(20);
+  textEntropy.setFillColor(sf::Color::White);
+  textEntropy.setPosition(10, 10);
+
+	CSandWand* sandWand = new CSandWand();
+  CWaterWand* waterWand = new CWaterWand();
 	CWorld world(window.getSize());
 
-	sf::Texture texture;
-	sf::Sprite sprite;
+	IMagicWand* wand = sandWand;
+  
+  int cnt = 0;
 	bool leftState = false;
 	while (window.isOpen())
 	{
@@ -52,6 +72,12 @@ int main(const int, const char**)
         {
           leftState = true;
         }
+        else if (event.mouseButton.button == sf::Mouse::Right)
+        {
+          if (cnt % 2 == 0) wand = waterWand;
+          else wand = sandWand;
+          ++cnt;
+        }
       }
       if (event.type == sf::Event::MouseButtonReleased)
       {
@@ -64,15 +90,22 @@ int main(const int, const char**)
 		if (leftState == true)
 		{
 			sf::Vector2i pos = sf::Mouse::getPosition(window);
-			wand.use(pos.x, pos.y, world);
+			wand->use(pos.x, pos.y, world);
 		}
 		
 		world.simulateWorld();
-
+    std::stringstream ss;
+    ss << world.getEntropy();
+    textEntropy.setString(ss.str());
 		texture.loadFromImage(world.getWorldImage());
 		sprite.setTexture(texture);
     window.clear();
     window.draw(sprite);
+    window.draw(textEntropy);
     window.display();
 	}
+  delete waterWand;
+  delete sandWand;
+
+  return 0;
 }

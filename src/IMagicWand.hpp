@@ -19,7 +19,7 @@ class IMagicWand
 {
 public:
   virtual       ~IMagicWand(void) {}
-  virtual void  use(unsigned int x, unsigned int y, CWorld& world) = 0;
+  virtual void  use(int x, int y, CWorld& world) = 0;
 };
 
 

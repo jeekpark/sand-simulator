@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sfml_path="sfml/2.6.1/include"
+sfml_path="lib/sfml/2.6.1/include"
 
 if [ ! -d "$sfml_path" ]; then
     echo "SFML library should exists in $sfml_path"
@@ -10,4 +10,4 @@ fi
 pwd=$(pwd)
 
 echo "CompileFlags:" > .clangd
-echo "  Add: [-I$pwd/$sfml_path, -std=c++11]" >> .clangd
+echo "  Add: [-I$pwd/$sfml_path, -std=c++14]" >> .clangd

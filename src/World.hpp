@@ -32,6 +32,8 @@ private:
   sf::Vector2u      mWorldSize;
   std::size_t       mEntropy;
   
+  void              simulateSand(void);
+  void              simulateWater(void);
 };
 
 #endif

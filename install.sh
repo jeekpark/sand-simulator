@@ -15,9 +15,9 @@ fi
 
 sfml_bundle_out=${sfml_bundle%.tar.gz}
 
-tar -xzvf ./sand-simulator/sfml/$sfml_bundle -C ./sand-simulator/sfml
-mv ./sand-simulator/sfml/$sfml_bundle_out ./sand-simulator/sfml/2.6.1
-mv ./sand-simulator/sfml/2.6.1/extlibs/freetype.framework ./sand-simulator/sfml/2.6.1/Frameworks/freetype.framework
+tar -xzvf ./sand-simulator/lib/sfml/$sfml_bundle -C ./sand-simulator/lib/sfml
+mv ./sand-simulator/lib/sfml/$sfml_bundle_out ./sand-simulator/lib/sfml/2.6.1
+mv ./sand-simulator/lib/sfml/2.6.1/extlibs/freetype.framework ./sand-simulator/lib/sfml/2.6.1/Frameworks/freetype.framework
 
 make -C sand-simulator clangd
 

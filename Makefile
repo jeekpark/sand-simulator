@@ -15,7 +15,8 @@ CLANGD_GEN  = ./clangd_gen.sh
 
 SRC_FILES		=	$(SRC_DIR)/main.cpp           \
 							$(SRC_DIR)/World.cpp					\
-							$(SRC_DIR)/SandWand.cpp
+							$(SRC_DIR)/SandWand.cpp				\
+							$(SRC_DIR)/WaterWand.cpp
 
 
 OBJ_FILES   = $(SRC_FILES:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)

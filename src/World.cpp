@@ -117,3 +117,8 @@ const sf::Image& CWorld::getWorldImage(void) const
 {
 	return mWorldImage;
 }
+
+
+
+
+void CWorld::simulate
