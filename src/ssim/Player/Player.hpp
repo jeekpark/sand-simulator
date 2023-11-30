@@ -8,7 +8,7 @@
  * @copyright Copyright (c) 2023
  * 
  */
-
+#pragma once
 #include "ssim/common.hpp"
 #include "ssim/Player/Wand/SandWand.hpp"
 #include "ssim/Scene/World/World.hpp"
@@ -22,6 +22,7 @@ namespace Ssim
     ~Player(void);
 
     void useWand(int x, int y, World& world);
+    void changeToSandWand(void);
   private:
     IWand* mCurrentWnad;
     SandWand mSandWand;

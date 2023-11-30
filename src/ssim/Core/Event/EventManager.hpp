@@ -12,7 +12,10 @@
 #pragma once
 
 #include "ssim/common.hpp"
+
 #include "ssim/UI/UI.hpp"
+#include "ssim/Player/Player.hpp"
+#include "ssim/Scene/World/World.hpp"
 
 namespace Ssim
 {
@@ -22,12 +25,11 @@ namespace Ssim
     EventManager(sf::RenderWindow& window);
     ~EventManager(void);
     
-    void handleEventQueue(void);
+    void handleEventQueue(const UI& pUI, Player& player);
+    bool getIsPressing(void) const;
   private:
     sf::RenderWindow& mWindow;
-    Ssim::UI& mUI;
     sf::Event mEvent;
     bool mIsPressing;
-
   };
 }

@@ -9,6 +9,7 @@
  * 
  */
 
+#pragma once
 #include "ssim/common.hpp"
 
 namespace Ssim

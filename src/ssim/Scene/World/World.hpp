@@ -21,6 +21,9 @@ namespace Ssim
     ~World(void);
     
     void updateWorld(void);
+    std::size_t getEntropy(void) const;
+    const sf::Image& getWorldImage(void) const;
+    void addParticle(unsigned int x, unsigned int y, const sf::Color& color);
   private:
     sf::Image mWorldImage;
     sf::Vector2u mWorldSize;

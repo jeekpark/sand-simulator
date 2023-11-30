@@ -18,12 +18,13 @@ namespace Ssim
   EventManager::EventManager(sf::RenderWindow& window)
   : mWindow(window)
   , mEvent()
+  , mIsPressing(false)
   {}
 
   EventManager::~EventManager(void)
   {}
 
-  void EventManager::handleEventQueue(void)
+  void EventManager::handleEventQueue(const UI& pUI, Player& player)
   {
     while (mWindow.pollEvent(mEvent))
     {
@@ -34,12 +35,28 @@ namespace Ssim
         if (mEvent.mouseButton.button == sf::Mouse::Left)
         {
           sf::Vector2i mousePos = sf::Mouse::getPosition(mWindow);
-          if (mUI.getSandIcon().getGlobalBounds().contains(mousePos.x,mousePos.y))
+          if (pUI.getSandIcon().getGlobalBounds().contains(mousePos.x,mousePos.y))
           {
-            
+            player.changeToSandWand();
+          }
+          else
+          {
+            mIsPressing = true;
           }
         }
       }
+      else if (mEvent.type == sf::Event::MouseButtonReleased)
+      {
+        if (mEvent.mouseButton.button == sf::Mouse::Left)
+        {
+          mIsPressing = false;
+        }
+      }
     }
+  }
+
+  bool EventManager::getIsPressing(void) const
+  {
+    return mIsPressing;
   }
 }

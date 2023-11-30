@@ -2,19 +2,25 @@ TARGET      = sand-simulator
 
 
 CXX         = c++
-CXXFLAGS    = -Wall -Wextra -Werror -I./lib/sfml/2.6.1/include -std=c++11
+CXXFLAGS    = -Wall -Wextra -Werror -I./lib/sfml/2.6.1/include -I./src -std=c++11
 
 LDFLAGS     = -L./lib/sfml/2.6.1/lib -lsfml-window -lsfml-graphics -lsfml-system -Wl,-rpath,./lib/sfml/2.6.1/lib
 
 SRC_DIR     = ./src
 SSIM_DIR		=	$(SRC_DIR)/ssim
+CORE_DIR		=	$(SSIM_DIR)/Core
+PLAYER_DIR	=	$(SSIM_DIR)/Player
+SCENE_DIR		=	$(SSIM_DIR)/Scene
+UI_DIR			=	$(SSIM_DIR)/UI_DIR
 
 CLANGD_GEN  = ./clangd_gen.sh
 
-SRC_FILES		=	$(SRC_DIR)/main.cpp           \
-							$(SRC_DIR)/World.cpp					\
-							$(SRC_DIR)/SandWand.cpp				\
-							$(SRC_DIR)/WaterWand.cpp
+SRC_FILES		=	$(SRC_DIR)/main.cpp           				\
+							$(CORE_DIR)/Core.cpp									\
+							$(CORE_DIR)/Event/EventManager.cpp		\
+							$(PLAYER_DIR)/Player.cpp							\
+							$(SCENE_DIR)/World/World.cpp					\
+							$(UI_DIR)/UI.cpp
 
 
 OBJ_FILES   = $(SRC_FILES:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
