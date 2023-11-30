@@ -33,7 +33,11 @@ namespace Ssim
       {
         if (mEvent.mouseButton.button == sf::Mouse::Left)
         {
-          
+          sf::Vector2i mousePos = sf::Mouse::getPosition(mWindow);
+          if (mUI.getSandIcon().getGlobalBounds().contains(mousePos.x,mousePos.y))
+          {
+            
+          }
         }
       }
     }

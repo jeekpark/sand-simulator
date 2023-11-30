@@ -12,6 +12,7 @@
 #pragma once
 
 #include "ssim/common.hpp"
+#include "ssim/UI/UI.hpp"
 
 namespace Ssim
 {
@@ -24,6 +25,7 @@ namespace Ssim
     void handleEventQueue(void);
   private:
     sf::RenderWindow& mWindow;
+    Ssim::UI& mUI;
     sf::Event mEvent;
     bool mIsPressing;
 
