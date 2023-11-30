@@ -10,7 +10,6 @@
  */
 
 
-#pragma once
 
 #include "ssim/Scene/World/World.hpp"
 

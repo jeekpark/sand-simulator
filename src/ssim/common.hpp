@@ -28,4 +28,4 @@
 
 #define WINDOW_X          800
 #define WINDOW_Y          600
-#define GLOBAL_FONT_PATH  "resource/Mincraft.ttf"
+#define GLOBAL_FONT_PATH  "resources/Minecraft.ttf"

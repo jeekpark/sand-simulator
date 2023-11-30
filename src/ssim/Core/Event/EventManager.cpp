@@ -9,8 +9,6 @@
  * 
  */
 
-#pragma once
-
 #include "ssim/Core/Event/EventManager.hpp"
 
 namespace Ssim

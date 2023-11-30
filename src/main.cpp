@@ -20,12 +20,12 @@ int main(const int, const char**)
 
   return 0;
 }
-
+/* 
 #include <cstdlib>
 #include <ctime>
 #include <iostream>
 
-#include "IMagicWand.hpp"
+#include "IWand.hpp"
 #include "SFML/Graphics/Color.hpp"
 #include "SFML/Graphics/Font.hpp"
 #include "SFML/Graphics/RenderWindow.hpp"
@@ -119,4 +119,4 @@ int main(const int, const char**)
   delete sandWand;
 
   return 0;
-}
+} */

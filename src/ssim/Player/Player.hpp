@@ -24,7 +24,7 @@ namespace Ssim
     void useWand(int x, int y, World& world);
     void changeToSandWand(void);
   private:
-    IWand* mCurrentWnad;
+    IWand* mCurrentWand;
     SandWand mSandWand;
   };
 }

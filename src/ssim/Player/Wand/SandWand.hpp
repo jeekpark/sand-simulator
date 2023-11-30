@@ -15,7 +15,7 @@
 
 #include "ssim/common.hpp"
 #include "ssim/Player/Wand/IWand.hpp"
-
+#include "ssim/Scene/World/World.hpp"
 namespace Ssim
 {
   class SandWand : public IWand

@@ -11,7 +11,9 @@ SSIM_DIR		=	$(SRC_DIR)/ssim
 CORE_DIR		=	$(SSIM_DIR)/Core
 PLAYER_DIR	=	$(SSIM_DIR)/Player
 SCENE_DIR		=	$(SSIM_DIR)/Scene
-UI_DIR			=	$(SSIM_DIR)/UI_DIR
+UI_DIR			=	$(SSIM_DIR)/UI
+
+OBJ_DIR			=	./obj
 
 CLANGD_GEN  = ./clangd_gen.sh
 
@@ -19,6 +21,7 @@ SRC_FILES		=	$(SRC_DIR)/main.cpp           				\
 							$(CORE_DIR)/Core.cpp									\
 							$(CORE_DIR)/Event/EventManager.cpp		\
 							$(PLAYER_DIR)/Player.cpp							\
+							$(PLAYER_DIR)/Wand/SandWand.cpp				\
 							$(SCENE_DIR)/World/World.cpp					\
 							$(UI_DIR)/UI.cpp
 
