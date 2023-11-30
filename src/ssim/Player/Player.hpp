@@ -10,6 +10,8 @@
  */
 
 #include "ssim/common.hpp"
+#include "ssim/Player/Wand/SandWand.hpp"
+#include "ssim/Scene/World/World.hpp"
 
 namespace Ssim
 {
@@ -18,6 +20,10 @@ namespace Ssim
   public:
     Player(void);
     ~Player(void);
+
+    void useWand(int x, int y, World& world);
   private:
+    IWand* mCurrentWnad;
+    SandWand mSandWand;
   };
 }

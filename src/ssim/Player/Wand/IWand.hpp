@@ -13,12 +13,12 @@
 
 namespace Ssim
 {
-  class CWorld;
+  class World;
 
   class IWand
   {
   public:
     virtual       ~IWand(void) {}
-    virtual void  use(int x, int y, CWorld& world) = 0;
+    virtual void  use(int x, int y, World& world) = 0;
   };
 }

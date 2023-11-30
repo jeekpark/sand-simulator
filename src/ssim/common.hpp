@@ -18,6 +18,7 @@
 #include <cmath>
 #include <ctime>
 #include <sstream>
+#include <random>
 
 #include <SFML/System.hpp>
 #include <SFML/Window.hpp>

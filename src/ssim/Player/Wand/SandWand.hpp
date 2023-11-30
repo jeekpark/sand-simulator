@@ -13,19 +13,24 @@
 #ifndef SAND_HPP
 #define SAND_HPP
 
-#include "./IMagicWand.hpp"
-#include "./World.hpp"
-class CSandWand : public IMagicWand
+#include "ssim/common.hpp"
+#include "ssim/Player/Wand/IWand.hpp"
+
+namespace Ssim
 {
-public:
-                CSandWand(void);
-                CSandWand(const CSandWand& copy);
-  virtual       ~CSandWand(void);
-  CSandWand&    operator=(const CSandWand& copy);
-  virtual void  use(int x, int y, CWorld& world);
-private:
-  int  mRadius;
-  int  mDensity;
-};
+  class SandWand : public IWand
+  {
+  public:
+                  SandWand(void);
+                  SandWand(const SandWand& copy);
+    virtual       ~SandWand(void);
+    SandWand&    operator=(const SandWand& copy);
+    virtual void  use(int x, int y, World& world);
+  private:
+    int  mRadius;
+    int  mDensity;
+  };
+}
+
 
 #endif
