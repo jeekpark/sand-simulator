@@ -21,7 +21,7 @@ int main(const int, const char**)
   return 0;
 }
 
-/* #include <cstdlib>
+#include <cstdlib>
 #include <ctime>
 #include <iostream>
 
@@ -119,4 +119,4 @@ int main(const int, const char**)
   delete sandWand;
 
   return 0;
-} */
+}

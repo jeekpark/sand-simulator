@@ -33,12 +33,7 @@ namespace Ssim
   {
     while (mWindow.isOpen())
     {
-      while (mEventManager.isPollEvent())
-      {
-        if (mEventManager.isClosedEvent())
-          mWindow.close();
-        
-      }
+      mEventManager.handleEventQueue();
 
     }
   }

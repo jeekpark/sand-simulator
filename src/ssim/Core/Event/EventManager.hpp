@@ -18,14 +18,14 @@ namespace Ssim
   class EventManager
   {
   public:
-    EventManager(sf::Window& window);
+    EventManager(sf::RenderWindow& window);
     ~EventManager(void);
     
-    bool isPollEvent(void);
-    bool isClosedEvent(void);
-    bool isMouseButtonEvent(void);
+    void handleEventQueue(void);
   private:
-    sf::Window& mWindow;
+    sf::RenderWindow& mWindow;
     sf::Event mEvent;
+    bool mIsPressing;
+
   };
 }
