@@ -20,4 +20,6 @@ mv ./sand-simulator/lib/sfml/$sfml_bundle_out ./sand-simulator/lib/sfml/2.6.1
 mv ./sand-simulator/lib/sfml/2.6.1/extlibs/freetype.framework ./sand-simulator/lib/sfml/2.6.1/Frameworks/freetype.framework
 
 make -C sand-simulator clangd
+make -C sand-simulator all
+cd sand-simulator
 
