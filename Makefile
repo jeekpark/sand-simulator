@@ -57,4 +57,7 @@ clean :
 clangd :
 	/bin/bash $(CLANGD_GEN)
 
+re : clean
+	make all
+
 .PHONY: all clean

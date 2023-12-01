@@ -29,16 +29,7 @@ namespace Ssim
   {
     mEntropy = 0;
     for (unsigned int y = mWorldSize.y - 2; y != std::numeric_limits<unsigned int>::max(); --y)
-    {
       updateWorldByLine(y);
-      /* for (unsigned int x = 0; x < mWorldSize.x; ++x)
-      {
-        if (mWorldImage.getPixel(x, y) == sf::Color::Yellow)
-          simulateSand(x, y);
-        else if (mWorldImage.getPixel(x, y) == sf::Color::Cyan)
-          simulateWater(x, y);
-      } */
-    }
   }
 
   const std::size_t& World::getEntropy(void) const
@@ -62,27 +53,71 @@ namespace Ssim
 
   void World::updateWorldByLine(int y)
   {
+    simulateGravityByLine(y);
+    simulateSlideByLine(y);
+
+    
+  }
+  
+  void World::simulateGravityByLine(int y)
+  {
     for (int x = 0; x < static_cast<int>(mWorldSize.x); ++x)
     {
       if (mWorldImage.getPixel(x, y) == sf::Color::Yellow && mWorldImage.getPixel(x, y + 1) == sf::Color::Black)
       {
         mWorldImage.setPixel(x, y, sf::Color::Black);
         mWorldImage.setPixel(x, y + 1, sf::Color::Yellow);
+        ++mEntropy;
       }
       else if (mWorldImage.getPixel(x, y) == sf::Color::Yellow && mWorldImage.getPixel(x, y + 1) == sf::Color::Cyan)
       {
-        ;
+        if (rand() % 10 < 2)
+        {
+          mWorldImage.setPixel(x, y, sf::Color::Cyan);
+          mWorldImage.setPixel(x, y + 1, sf::Color::Yellow);
+        }
       }
       else if (mWorldImage.getPixel(x, y) == sf::Color::Cyan && mWorldImage.getPixel(x, y + 1) == sf::Color::Black)
       {
         mWorldImage.setPixel(x, y, sf::Color::Black);
         mWorldImage.setPixel(x, y + 1, sf::Color::Cyan);
+        ++mEntropy;
       }
-      else if (x != 0 && mWorldImage.getPixel(x, y) == sf::Color::Cyan && mWorldImage.getPixel(x, y + 1) != sf::Color::Black
+    }
+  }
+  
+  void World::simulateSlideByLine(int y)
+  {
+    for (int x = 0; x < static_cast<int>(mWorldSize.x); ++x)
+    {
+      if (x != 0 && x < static_cast<int>(mWorldSize.x) - 1 && mWorldImage.getPixel(x, y) == sf::Color::Cyan
+               && mWorldImage.getPixel(x - 1, y) == sf::Color::Black && mWorldImage.getPixel(x + 1, y) == sf::Color::Black)
+      {
+        int randomValue = rand() % 2;
+        if (randomValue == 0)
+        {
+          mWorldImage.setPixel(x, y, sf::Color::Black);
+          mWorldImage.setPixel(x - 1, y, sf::Color::Cyan);
+          ++mEntropy;
+        }
+        else if (randomValue == 1)
+        {
+          mWorldImage.setPixel(x, y, sf::Color::Black);
+          mWorldImage.setPixel(x + 1, y, sf::Color::Cyan);
+          ++x;
+          ++mEntropy;
+        }
+        else ;
+      }
+      if (rand() % 2 == 0)
+      {
+      if (x != 0 && mWorldImage.getPixel(x, y) == sf::Color::Cyan && mWorldImage.getPixel(x, y + 1) != sf::Color::Black
                && mWorldImage.getPixel(x - 1, y) == sf::Color::Black && mWorldImage.getPixel(x + 1, y) != sf::Color::Black)
       {
         mWorldImage.setPixel(x, y, sf::Color::Black);
         mWorldImage.setPixel(x - 1, y, sf::Color::Cyan);
+        ++mEntropy;
+      }
       }
       else if (x < static_cast<int>(mWorldSize.x) - 1 && mWorldImage.getPixel(x, y) == sf::Color::Cyan && mWorldImage.getPixel(x, y + 1) != sf::Color::Black
                && mWorldImage.getPixel(x - 1, y) != sf::Color::Black && mWorldImage.getPixel(x + 1, y) == sf::Color::Black)
@@ -90,24 +125,9 @@ namespace Ssim
         mWorldImage.setPixel(x, y, sf::Color::Black);
         mWorldImage.setPixel(x + 1, y, sf::Color::Cyan);
         ++x;
+        ++mEntropy;
       }
-      else if (x != 0 && x < static_cast<int>(mWorldSize.x) - 1 && mWorldImage.getPixel(x, y) == sf::Color::Cyan && mWorldImage.getPixel(x, y + 1) != sf::Color::Black
-               && mWorldImage.getPixel(x - 1, y) == sf::Color::Black && mWorldImage.getPixel(x + 1, y) == sf::Color::Black)
-      {
-        int randomValue = rand() % 3;
-        if (randomValue == 0)
-        {
-          mWorldImage.setPixel(x, y, sf::Color::Black);
-          mWorldImage.setPixel(x - 1, y, sf::Color::Cyan);
-        }
-        else if (randomValue == 1)
-        {
-          mWorldImage.setPixel(x, y, sf::Color::Black);
-          mWorldImage.setPixel(x + 1, y, sf::Color::Cyan);
-          x++;
-        }
-        else ;
-      }
+      
     }
   }
 

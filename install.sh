@@ -21,5 +21,5 @@ mv ./sand-simulator/lib/sfml/2.6.1/extlibs/freetype.framework ./sand-simulator/l
 
 make -C sand-simulator clangd
 make -C sand-simulator all
-cd sand-simulator
+
 

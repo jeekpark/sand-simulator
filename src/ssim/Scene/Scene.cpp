@@ -25,7 +25,10 @@ namespace Ssim
     mWindow.draw(pUI.getSandIcon());
     mWindow.draw(pUI.getWaterIcon());
     mWindow.draw(pUI.getEraserIcon());
+
     mWindow.draw(pUI.getEntropyText());
+    mWindow.draw(pUI.getFramePerSecondText());
+
     mWindow.draw(pUI.getCursor());
   }
 

@@ -24,9 +24,11 @@ namespace Ssim
     const sf::RectangleShape& getWaterIcon(void) const;
     const sf::RectangleShape& getEraserIcon(void) const;
     const sf::CircleShape& getCursor(void) const;
+    const sf::Text& getFramePerSecondText(void);
 
     void setCursorColor(sf::Color color);
     void setCursorPosition(int x, int y);
+
   private:
     const std::size_t& mEntropy;
     sf::Font mMainFont;
@@ -35,5 +37,9 @@ namespace Ssim
     sf::RectangleShape mWaterIcon;
     sf::RectangleShape mEraserIcon;
     sf::CircleShape mCursor;
+    float mFrameCount;
+    sf::Text mFramePerSecondText;
+    sf::Clock mClork;
+
   };
 }

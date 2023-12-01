@@ -26,6 +26,7 @@ namespace Ssim
       for (int j = y - mRadius; j <= y + mRadius; ++j)
         if (std::pow(i - x, 2) + std::pow(j - y, 2) <= std::pow(mRadius, 2))
           if (rand() % 10 == 0)
-            world.addParticle(i, j, sf::Color::Cyan);
+            if (world.getWorldImage().getPixel(i, j) == sf::Color::Black)
+              world.addParticle(i, j, sf::Color::Cyan);
   }
 }

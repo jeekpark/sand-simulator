@@ -19,6 +19,7 @@
 #include <ctime>
 #include <sstream>
 #include <random>
+#include <iomanip>
 
 #include <SFML/System.hpp>
 #include <SFML/Window.hpp>

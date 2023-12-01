@@ -19,7 +19,6 @@ namespace Ssim
   public:
     World(const sf::Vector2u& size);
     ~World(void);
-    
     void updateWorld(void);
     const std::size_t& getEntropy(void) const;
     const sf::Image& getWorldImage(void) const;
@@ -28,31 +27,10 @@ namespace Ssim
     sf::Image mWorldImage;
     sf::Vector2u mWorldSize;
     std::size_t mEntropy;
-
-    void simulateSand(int x, int y);
-    void simulateWater(int x, int y);
+  private:
     void updateWorldByLine(int y);
+
+    void simulateGravityByLine(int y);
+    void simulateSlideByLine(int y);
   };
 }
-
-
-/* class CWorld
-{
-public:
-                    CWorld(const sf::Vector2u& size);
-                    CWorld(const CWorld& copy);
-                    ~CWorld(void);
-  CWorld&           operator=(const CWorld& copy);
-
-  void              simulateWorld(void);
-  std::size_t       getEntropy(void) const;
-  void              addParticle(unsigned int x, unsigned int y, const sf::Color& color);
-  const sf::Image&  getWorldImage(void) const;
-private:
-  sf::Image         mWorldImage;
-  sf::Vector2u      mWorldSize;
-  std::size_t       mEntropy;
-  
-  void              simulateSand(void);
-  void              simulateWater(void);
-}; */

@@ -23,9 +23,9 @@ namespace Ssim
     mEntropyText.setCharacterSize(20);
     mEntropyText.setFillColor(sf::Color::White);
     mEntropyText.setPosition(XOffSet, YOffSet);
-    std::stringstream ss;
-    ss << mEntropy;
-    mEntropyText.setString(ss.str());
+    std::stringstream ssEntropy;
+    ssEntropy << mEntropy;
+    mEntropyText.setString(ssEntropy.str());
 
     mSandIcon = sf::RectangleShape(sf::Vector2f(100, 100));
     mSandIcon.setPosition(WINDOW_X - 100 - XOffSet, YOffSet);
@@ -50,6 +50,15 @@ namespace Ssim
     mCursor.setOutlineColor(sf::Color::Yellow);
     mCursor.setFillColor(sf::Color::Transparent);
     mCursor.setPosition(100, 100);
+
+    mFrameCount = 0.f;
+    mFramePerSecondText.setFont(mMainFont);
+    mFramePerSecondText.setCharacterSize(20);
+    mFramePerSecondText.setFillColor(sf::Color::White);
+    mFramePerSecondText.setPosition(XOffSet, YOffSet + 25);
+    mFramePerSecondText.setString(std::string("FPS: "));
+
+    mClork.restart();
   }
 
   UI::~UI(void)
@@ -85,5 +94,19 @@ namespace Ssim
   void UI::setCursorPosition(int x, int y)
   {
     mCursor.setPosition(x - 20, y - 20);
+  }
+
+  const sf::Text& UI::getFramePerSecondText(void)
+  {
+    mFrameCount += 1.f;
+    if (mClork.getElapsedTime().asSeconds() >= 1.f)
+    {
+      std::stringstream ss;
+      ss << std::fixed << std::setprecision(2) << mFrameCount;
+      mFramePerSecondText.setString("FPS: " + ss.str());
+      mFrameCount = 0.f;
+      mClork.restart();
+    }
+    return mFramePerSecondText;
   }
 }
