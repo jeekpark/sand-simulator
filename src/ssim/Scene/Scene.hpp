@@ -12,7 +12,8 @@
 
 #include "ssim/common.hpp"
 
-
+#include "ssim/UI/UI.hpp"
+#include "ssim/Scene/World/World.hpp"
 
 namespace Ssim
 {
@@ -21,12 +22,9 @@ namespace Ssim
   public:
     Scene(sf::RenderWindow& window);
     ~Scene();
+    void render(UI& pUI);
+    void render(World& world);
   private:
     sf::RenderWindow& mWindow;
-    
-    sf::Texture texture;
-	  sf::Sprite sprite;
-    sf::Font font;
-    sf::Text textEntropy;
   };
 }

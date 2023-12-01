@@ -19,10 +19,14 @@ namespace Ssim
   public:
     UI(const std::size_t& entropy);
     ~UI(void);
-    const sf::Text& getEntropyText(void) const;
+    const sf::Text& getEntropyText(void);
     const sf::RectangleShape& getSandIcon(void) const;
     const sf::RectangleShape& getWaterIcon(void) const;
     const sf::RectangleShape& getEraserIcon(void) const;
+    const sf::CircleShape& getCursor(void) const;
+
+    void setCursorColor(sf::Color color);
+    void setCursorPosition(int x, int y);
   private:
     const std::size_t& mEntropy;
     sf::Font mMainFont;
@@ -30,5 +34,6 @@ namespace Ssim
     sf::RectangleShape mSandIcon;
     sf::RectangleShape mWaterIcon;
     sf::RectangleShape mEraserIcon;
+    sf::CircleShape mCursor;
   };
 }

@@ -26,8 +26,20 @@ namespace Ssim
     mCurrentWand->use(x, y, world);
   }
 
-  void Player::changeToSandWand(void)
+  void Player::changeTo(WandType wandType)
   {
-    mCurrentWand = &mSandWand;
+    switch (wandType)
+    {
+    case SAND:
+      mCurrentWand = &mSandWand;
+      break;
+    case ERASER:
+      mCurrentWand = &mEraserWand;
+      break;
+    case WATER:
+      mCurrentWand = &mWaterWand;
+    default:
+      break;
+    }
   }
 }

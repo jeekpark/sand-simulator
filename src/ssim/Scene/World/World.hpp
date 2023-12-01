@@ -21,7 +21,7 @@ namespace Ssim
     ~World(void);
     
     void updateWorld(void);
-    std::size_t getEntropy(void) const;
+    const std::size_t& getEntropy(void) const;
     const sf::Image& getWorldImage(void) const;
     void addParticle(unsigned int x, unsigned int y, const sf::Color& color);
   private:
@@ -29,8 +29,9 @@ namespace Ssim
     sf::Vector2u mWorldSize;
     std::size_t mEntropy;
 
-    void simulateSand(void);
-    void simulateWater(void);
+    void simulateSand(int x, int y);
+    void simulateWater(int x, int y);
+    void updateWorldByLine(int y);
   };
 }
 

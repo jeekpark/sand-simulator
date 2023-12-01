@@ -22,7 +22,7 @@ namespace Ssim
   EventManager::~EventManager(void)
   {}
 
-  void EventManager::handleEventQueue(const UI& pUI, Player& player)
+  void EventManager::handleEventQueue(UI& pUI, Player& player)
   {
     while (mWindow.pollEvent(mEvent))
     {
@@ -33,9 +33,20 @@ namespace Ssim
         if (mEvent.mouseButton.button == sf::Mouse::Left)
         {
           sf::Vector2i mousePos = sf::Mouse::getPosition(mWindow);
-          if (pUI.getSandIcon().getGlobalBounds().contains(mousePos.x,mousePos.y))
+          if (pUI.getSandIcon().getGlobalBounds().contains(mousePos.x, mousePos.y))
           {
-            player.changeToSandWand();
+            player.changeTo(Player::SAND);
+            pUI.setCursorColor(sf::Color::Yellow);
+          }
+          else if (pUI.getEraserIcon().getGlobalBounds().contains(mousePos.x, mousePos.y))
+          {
+            player.changeTo(Player::ERASER);
+            pUI.setCursorColor(sf::Color::White);
+          }
+          else if (pUI.getWaterIcon().getGlobalBounds().contains(mousePos.x, mousePos.y))
+          {
+            player.changeTo(Player::WATER);
+            pUI.setCursorColor(sf::Color::Cyan);
           }
           else
           {

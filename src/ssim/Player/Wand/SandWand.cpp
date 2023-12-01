@@ -18,23 +18,9 @@ namespace Ssim
   , mDensity(5)
   {}  
 
-  SandWand::SandWand(const SandWand& copy)
-  : mRadius(copy.mRadius)
-  , mDensity(copy.mDensity)
-  {}  
 
   SandWand::~SandWand(void)
   {}  
-
-  SandWand& SandWand::operator=(const SandWand &copy)
-  {
-    if (this != &copy)
-    {
-      mRadius = copy.mRadius;
-      mDensity = copy.mDensity;
-    }
-    return *this;
-  } 
 
   void SandWand::use(int x, int y, World& world)
   {

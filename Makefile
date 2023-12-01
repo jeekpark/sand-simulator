@@ -22,7 +22,10 @@ SRC_FILES		=	$(SRC_DIR)/main.cpp           				\
 							$(CORE_DIR)/Event/EventManager.cpp		\
 							$(PLAYER_DIR)/Player.cpp							\
 							$(PLAYER_DIR)/Wand/SandWand.cpp				\
+							$(PLAYER_DIR)/Wand/WaterWand.cpp			\
+							$(PLAYER_DIR)/Wand/EraserWand.cpp			\
 							$(SCENE_DIR)/World/World.cpp					\
+							$(SCENE_DIR)/Scene.cpp								\
 							$(UI_DIR)/UI.cpp
 
 

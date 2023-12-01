@@ -22,6 +22,7 @@ namespace Ssim
   , mPlayer()
   , mUI(mWorld.getEntropy())
   , mEventManager(mWindow)
+  , mScene(mWindow)
   {
     std::srand(static_cast<unsigned int>(std::time((time_t*)0)));
     mWindowTitle.append(SSIM_VERSION);
@@ -40,18 +41,16 @@ namespace Ssim
     while (mWindow.isOpen())
     {
       mEventManager.handleEventQueue(mUI, mPlayer);
+      sf::Vector2i pos = sf::Mouse::getPosition(mWindow);
       if (mEventManager.getIsPressing())
       {
-        sf::Vector2i pos = sf::Mouse::getPosition();
         mPlayer.useWand(pos.x, pos.y, mWorld);
       }
+      mUI.setCursorPosition(pos.x, pos.y);
       mWorld.updateWorld();
-      sf::Texture a;
-      a.loadFromImage(mWorld.getWorldImage());
-      sf::Sprite b;
-      b.setTexture(a);
       mWindow.clear();
-      mWindow.draw(b);
+      mScene.render(mWorld);
+      mScene.render(mUI);
       mWindow.display();
     } 
   }

@@ -25,7 +25,7 @@ namespace Ssim
     EventManager(sf::RenderWindow& window);
     ~EventManager(void);
     
-    void handleEventQueue(const UI& pUI, Player& player);
+    void handleEventQueue(UI& pUI, Player& player);
     bool getIsPressing(void) const;
   private:
     sf::RenderWindow& mWindow;

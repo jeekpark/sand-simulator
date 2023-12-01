@@ -1,17 +1,15 @@
 /**
- * @file SandWand.hpp
+ * @file EraserWand.hpp
  * @author Jeekun Park (jeekunp@naver.com)
  * @brief 
  * @version 0.1
- * @date 2023-11-26
+ * @date 2023-12-01
  * 
  * @copyright Copyright (c) 2023
  * 
  */
 
 #pragma once
-#ifndef SAND_HPP
-#define SAND_HPP
 
 #include "ssim/common.hpp"
 
@@ -20,18 +18,14 @@
 
 namespace Ssim
 {
-  class SandWand : public IWand
+  class EraserWand : public IWand
   {
   public:
-                  SandWand(void);
-    virtual       ~SandWand(void);
-    
+                  EraserWand(void);
+    virtual       ~EraserWand(void);
+
     virtual void  use(int x, int y, World& world);
   private:
     int  mRadius;
-    int  mDensity;
   };
 }
-
-
-#endif

@@ -61,5 +61,6 @@ namespace Ssim
     Player mPlayer;
     UI mUI;
     EventManager mEventManager;
+    Scene mScene;
   };
 }

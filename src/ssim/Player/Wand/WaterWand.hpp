@@ -1,17 +1,15 @@
 /**
- * @file SandWand.hpp
+ * @file WaterWand.hpp
  * @author Jeekun Park (jeekunp@naver.com)
  * @brief 
  * @version 0.1
- * @date 2023-11-26
+ * @date 2023-12-01
  * 
  * @copyright Copyright (c) 2023
  * 
  */
 
 #pragma once
-#ifndef SAND_HPP
-#define SAND_HPP
 
 #include "ssim/common.hpp"
 
@@ -20,18 +18,13 @@
 
 namespace Ssim
 {
-  class SandWand : public IWand
+  class WaterWand : public IWand
   {
   public:
-                  SandWand(void);
-    virtual       ~SandWand(void);
-    
-    virtual void  use(int x, int y, World& world);
+    WaterWand(void);
+    virtual ~WaterWand(void);
+    virtual void use(int x, int y, World& world);
   private:
-    int  mRadius;
-    int  mDensity;
+    int mRadius;
   };
 }
-
-
-#endif
